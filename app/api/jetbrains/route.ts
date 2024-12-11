@@ -18,7 +18,9 @@ export async function GET(request: Request) {
     const baseUrl = "https://plugins.jetbrains.com/api/plugins";
     let url = `${baseUrl}/${pluginId}`;
 
-    if (endpoint === "reviews") {
+    if (endpoint === "rating") {
+      url = `${baseUrl}/${pluginId}/rating`;
+    } else if (endpoint === "reviews") {
       url = `${baseUrl}/${pluginId}/comments`;
       const params = new URLSearchParams({
         offset: (offset || "0").toString(),

@@ -78,9 +78,9 @@ export const userConfig: UserConfig = {
     description: [
       "I’m a tech enthusiast and an AI aficionado who loves diving into the latest innovations in artificial intelligence and figuring out how to integrate them into real projects. As an indie developer, I’m passionate about creating fun, small-scale products—especially those weekend projects that can quickly come to life.",
 
-      "My expertise lies in backend development, where I’ve built up solid experience over the years. From API design to data processing and performance optimization, I’ve tackled it all. That said, I’ll admit I’m still a beginner when it comes to frontend development, but I genuinely enjoy the challenge of picking up new skills from scratch.",
+      "My expertise lies in backend development, where I’ve built up solid experience over the years. That said, I’ll admit I’m still a beginner when it comes to frontend development, but I genuinely enjoy the challenge of picking up new skills from scratch.",
 
-      "When I’m not coding, you’ll probably find me brainstorming quirky ideas and exploring ways to turn them into reality with tech. For me, technology isn’t just a tool—it’s a way to bring creative ideas to life.",
+      "For me, technology isn’t just a tool—it’s a way to bring creative ideas to life.",
     ],
     skills: [
       "Java",

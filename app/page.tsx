@@ -93,23 +93,23 @@ export default function Home() {
         {/* Contact Section */}
         <section id="contact" className="text-center mb-16">
           <h3 className="text-3xl font-bold mb-6 text-gray-800">Get In Touch</h3>
-          <p className="mb-6 text-xl text-gray-600">Interested in collaborating or have a project idea? Let's connect!</p>
+          <p className="mb-6 text-xl text-gray-600">Looking forward to communicating with you!</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
               <a href={`mailto:${userConfig.social.email}`}>
-                <Mail className="mr-2 h-5 w-5" /> Email Me
+                <Mail className="mr-2 h-5 w-5" /> Email
               </a>
             </Button>
             {userConfig.social.twitter && (
               <Button size="lg" asChild className="bg-[#1DA1F2] text-white hover:bg-[#1a91da] transition-all duration-300">
                 <a href={userConfig.social.twitter} target="_blank" rel="noopener noreferrer">
-                  <Twitter className="mr-2 h-5 w-5" /> Follow on Twitter
+                  <Twitter className="mr-2 h-5 w-5" /> Twitter
                 </a>
               </Button>
             )}
             <Button size="lg" asChild className="bg-[#333] text-white hover:bg-[#24292e] transition-all duration-300">
               <a href={userConfig.social.github} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" /> View on GitHub
+                <Github className="mr-2 h-5 w-5" /> GitHub
               </a>
             </Button>
           </div>

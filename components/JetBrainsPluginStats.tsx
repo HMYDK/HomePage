@@ -1,9 +1,9 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
+import { Card, CardContent } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import { Download, Star, History, MessageSquare } from 'lucide-react'
+import { Download, Star, History, MessageSquare, Activity } from 'lucide-react'
 import { getPluginInfoWithCache, fetchPluginReviews, fetchPluginVersionHistory, type PluginInfo, type PluginVersion, type PluginReview } from '@/lib/jetbrains'
 
 interface PluginStatsProps {
@@ -83,9 +83,10 @@ export default function JetBrainsPluginStats({ pluginId }: PluginStatsProps) {
                         <div className="text-sm text-gray-500">Downloads</div>
                     </div>
                     <div className="flex flex-col items-center p-4 bg-gray-50 rounded-lg">
-                        <Star className="w-6 h-6 text-yellow-500 mb-2" />
+                        <Activity className="w-6 h-6 text-yellow-500 mb-2" />
                         <div className="text-2xl font-bold">{pluginInfo.stats.rating.toFixed(1)}/5</div>
-                        <div className="text-sm text-gray-500">{pluginInfo.stats.ratingsCount} Ratings</div>
+                        {/* <div className="text-sm text-gray-500">{pluginInfo.stats.rating} Ratings</div> */}
+                        <div className="text-sm text-gray-500">Ratings</div>
                     </div>
                     <div className="flex flex-col items-center p-4 bg-gray-50 rounded-lg">
                         <History className="w-6 h-6 text-green-500 mb-2" />

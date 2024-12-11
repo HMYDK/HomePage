@@ -1,9 +1,8 @@
+import { formatTimestamp } from "./utils";
+
 export interface PluginStats {
   downloads: number;
   rating: number;
-  ratingsCount: number;
-  lastUpdated: string;
-  version: string;
 }
 
 export interface PluginInfo {
@@ -40,19 +39,6 @@ export interface PluginReview {
   };
 }
 
-interface JetBrainsReviewResponse {
-  id: number;
-  cdate: string;
-  comment: string;
-  rating: number;
-  repliesCount: number;
-  author: {
-    name: string;
-    icon: string;
-  };
-  updateVersion?: string;
-}
-
 // 缓存接口
 interface CacheEntry<T> {
   data: T;
@@ -65,7 +51,7 @@ const CACHE_CONFIG = {
   MAX_ENTRIES: 100, // 最大缓存条目数
 } as const;
 
-// 缓��实例
+// 缓存实例
 const pluginCache = new Map<string, CacheEntry<PluginInfo>>();
 
 /**
@@ -77,13 +63,20 @@ export async function fetchJetBrainsPluginInfo(
   pluginId: string
 ): Promise<PluginInfo | null> {
   try {
-    const response = await fetch(`/api/jetbrains?pluginId=${pluginId}`);
+    // 并行请求插件信息和评分
+    const [infoResponse, ratingResponse] = await Promise.all([
+      fetch(`/api/jetbrains?pluginId=${pluginId}`),
+      fetch(`/api/jetbrains?pluginId=${pluginId}&endpoint=rating`),
+    ]);
 
-    if (!response.ok) {
-      throw new Error(`Failed to fetch plugin info: ${response.statusText}`);
+    if (!infoResponse.ok || !ratingResponse.ok) {
+      throw new Error(`Failed to fetch plugin info or rating`);
     }
 
-    const data = await response.json();
+    const [data, ratingData] = await Promise.all([
+      infoResponse.json(),
+      ratingResponse.json(),
+    ]);
 
     const pluginInfo = {
       id: pluginId,
@@ -91,12 +84,9 @@ export async function fetchJetBrainsPluginInfo(
       description: data.description,
       stats: {
         downloads: data.downloads || 0,
-        rating: data.rating?.averageRating || 0,
-        ratingsCount: data.rating?.ratings || 0,
-        lastUpdated: data.lastUpdated,
-        version: data.version,
+        rating: ratingData.meanRating || 0,
       },
-      categories: data.categories || [],
+      categories: data.tags?.map((tag: any) => tag.name) || [],
       vendor: {
         name: data.vendor?.name || "Unknown",
         url: data.vendor?.url || "",
@@ -133,7 +123,9 @@ export async function fetchPluginVersionHistory(
 
     const versions = data.map((version: any) => ({
       version: version.version || "Unknown",
-      releaseDate: version.releaseDate || new Date().toISOString(),
+      releaseDate: version.cdate
+        ? formatTimestamp(version.cdate)
+        : new Date().toISOString(),
       notes: version.notes || "",
       downloads: version.downloads || 0,
       since: version.since,
