@@ -97,7 +97,7 @@ export async function getProjectStats(config: {
     if (jetbrainsInfo.stats.rating > 0) {
       stats.rating = {
         score: jetbrainsInfo.stats.rating,
-        count: jetbrainsInfo.stats.ratingsCount,
+        count: 0,
       };
     }
   }
