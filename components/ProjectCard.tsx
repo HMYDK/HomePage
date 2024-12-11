@@ -96,9 +96,9 @@ export default function ProjectCard({
                 variant="secondary"
                 className={cn(
                   "bg-white/90",
-                  status === "Active" && "text-green-600",
-                  status === "Beta" && "text-blue-600",
-                  status === "Development" && "text-orange-600"
+                  status === "Active" && "text-green-700",
+                  status === "Beta" && "text-blue-700",
+                  status === "Development" && "text-orange-700"
                 )}
               >
                 {status}
@@ -185,7 +185,7 @@ export default function ProjectCard({
                 onClick={() => setIsExpanded(!isExpanded)}
                 className="ml-auto"
               >
-                {isExpanded ? 'Show Less' : 'Learn More'}
+                {isExpanded ? 'Show Less' : 'Show More'}
               </Button>
             )}
           </div>

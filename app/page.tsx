@@ -101,7 +101,7 @@ export default function Home() {
               </a>
             </Button>
             {userConfig.social.twitter && (
-              <Button size="lg" asChild className="bg-[#1DA1F2] text-white hover:bg-[#1a91da] transition-all duration-300">
+              <Button size="lg" asChild className="bg-[#0C7ABF] text-white hover:bg-[#0A6AA6] transition-all duration-300">
                 <a href={userConfig.social.twitter} target="_blank" rel="noopener noreferrer">
                   <Twitter className="mr-2 h-5 w-5" /> Twitter
                 </a>
