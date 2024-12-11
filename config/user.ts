@@ -61,8 +61,8 @@ interface UserConfig {
 export const userConfig: UserConfig = {
   // 基本信息
   name: "HMYDK",
-  title: "Full Stack Developer | Open Source Enthusiast | Tech Blogger",
-  avatar: "/placeholder.svg",
+  title: "AI-Oriented Programming | Weekend Maker",
+  avatar: "/avatars/avatar.jpg",
 
   // 社交链接
   social: {
@@ -73,20 +73,23 @@ export const userConfig: UserConfig = {
 
   // 关于我
   about: {
-    title: "Hello, World!",
+    title: "print('Hello, World!')",
     subtitle: "Passionate about crafting elegant solutions to complex problems",
     description: [
-      "I'm a full stack developer with 5+ years of experience in building scalable web applications. My journey in tech has been driven by curiosity and a love for learning. I thrive in collaborative environments and enjoy tackling challenging projects that push the boundaries of what's possible.",
-      "When I'm not coding, you can find me contributing to open source projects, writing technical blogs, or exploring the latest developments in AI and machine learning.",
+      "I’m a tech enthusiast and an AI aficionado who loves diving into the latest innovations in artificial intelligence and figuring out how to integrate them into real projects. As an indie developer, I’m passionate about creating fun, small-scale products—especially those weekend projects that can quickly come to life.",
+
+      "My expertise lies in backend development, where I’ve built up solid experience over the years. From API design to data processing and performance optimization, I’ve tackled it all. That said, I’ll admit I’m still a beginner when it comes to frontend development, but I genuinely enjoy the challenge of picking up new skills from scratch.",
+
+      "When I’m not coding, you’ll probably find me brainstorming quirky ideas and exploring ways to turn them into reality with tech. For me, technology isn’t just a tool—it’s a way to bring creative ideas to life.",
     ],
     skills: [
+      "Java",
+      "Python",
       "JavaScript",
       "TypeScript",
       "React",
-      "Node.js",
-      "Python",
+      "Next.js",
       "Docker",
-      "AWS",
     ],
   },
 
@@ -125,7 +128,7 @@ export const userConfig: UserConfig = {
       iconColor: "text-blue-500",
       image: "/projects/web-highlighter.png",
       links: {
-        github: "https://github.com/HMYDK/code-review-gpt",
+        // github: "https://github.com/HMYDK/code-review-gpt",
         demo: "https://plugins.jetbrains.com/plugin/24851-ai-git-commit",
       },
     },

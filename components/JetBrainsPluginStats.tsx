@@ -24,30 +24,21 @@ export default function JetBrainsPluginStats({ pluginId }: PluginStatsProps) {
                 setLoading(true)
                 setError(null)
 
-                console.log("Fetching plugin data for:", pluginId);
                 const [info, reviewsData, versionHistory] = await Promise.all([
                     getPluginInfoWithCache(pluginId),
                     fetchPluginReviews(pluginId, 0, 3),
                     fetchPluginVersionHistory(pluginId)
                 ]);
-                console.log("Fetched data:", { info, reviewsData, versionHistory });
 
                 if (info) {
                     setPluginInfo(info);
                     setReviews(reviewsData.reviews);
                     setTotalReviews(reviewsData.total);
                     setVersions(versionHistory);
-                    console.log("State updated with:", {
-                        pluginInfo: info,
-                        reviews: reviewsData.reviews,
-                        totalReviews: reviewsData.total,
-                        versions: versionHistory
-                    });
                 } else {
                     setError('Failed to load plugin information');
                 }
             } catch (err) {
-                console.error("Error in loadPluginData:", err);
                 setError('An error occurred while loading plugin data');
             } finally {
                 setLoading(false);

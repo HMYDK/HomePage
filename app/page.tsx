@@ -3,7 +3,6 @@ import { Github, Linkedin, Mail, Terminal, Twitter } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
-import GithubActivity from '@/components/GithubActivity'
 import ProjectsSection from '@/components/ProjectsSection'
 import { userConfig } from '@/config/user'
 
@@ -90,11 +89,6 @@ export default function Home() {
 
         {/* Projects Section */}
         <ProjectsSection />
-
-        {/* GitHub Activity Section */}
-        <section id="github-activity" className="mb-16">
-          <GithubActivity />
-        </section>
 
         {/* Contact Section */}
         <section id="contact" className="text-center mb-16">

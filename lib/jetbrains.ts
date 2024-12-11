@@ -84,7 +84,6 @@ export async function fetchJetBrainsPluginInfo(
     }
 
     const data = await response.json();
-    console.log("Plugin info raw data:", data);
 
     const pluginInfo = {
       id: pluginId,
@@ -104,7 +103,6 @@ export async function fetchJetBrainsPluginInfo(
       },
     };
 
-    console.log("Processed plugin info:", pluginInfo);
     return pluginInfo;
   } catch (error) {
     console.error("Error fetching JetBrains plugin info:", error);
@@ -132,7 +130,6 @@ export async function fetchPluginVersionHistory(
     }
 
     const data = await response.json();
-    console.log("Version history raw data:", data);
 
     const versions = data.map((version: any) => ({
       version: version.version || "Unknown",
@@ -143,10 +140,8 @@ export async function fetchPluginVersionHistory(
       until: version.until,
     }));
 
-    console.log("Processed version history:", versions);
     return versions;
   } catch (error) {
-    console.error("Error fetching plugin version history:", error);
     return [];
   }
 }
@@ -173,7 +168,6 @@ export async function fetchPluginReviews(
     }
 
     const data = await response.json();
-    console.log("Reviews raw data:", data);
 
     const reviews = data.map((review: any) => ({
       id: review.id,
@@ -188,7 +182,6 @@ export async function fetchPluginReviews(
       },
     }));
 
-    console.log("Processed reviews:", reviews);
     return {
       reviews,
       total: data.length || 0,

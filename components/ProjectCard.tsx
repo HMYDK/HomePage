@@ -67,19 +67,44 @@ export default function ProjectCard({
               {title}
             </h3>
           </div>
-          {status && (
-            <Badge
-              variant="secondary"
-              className={cn(
-                "bg-white/90",
-                status === "Active" && "text-green-600",
-                status === "Beta" && "text-blue-600",
-                status === "Development" && "text-orange-600"
-              )}
-            >
-              {status}
-            </Badge>
-          )}
+          <div className="flex items-center gap-4">
+            {/* 统计信息 */}
+            {stats && (
+              <div className="flex items-center gap-4 text-sm">
+                {stats.stars !== undefined && (
+                  <div className="flex items-center gap-1">
+                    <Star className="w-4 h-4 text-yellow-500" />
+                    <span className="text-gray-600">{stats.stars.toLocaleString()}</span>
+                  </div>
+                )}
+                {stats.downloads !== undefined && (
+                  <div className="flex items-center gap-1">
+                    <Download className="w-4 h-4 text-blue-500" />
+                    <span className="text-gray-600">{stats.downloads.toLocaleString()}</span>
+                  </div>
+                )}
+                {stats.rating && (
+                  <div className="flex items-center gap-1">
+                    <Activity className="w-4 h-4 text-green-500" />
+                    <span className="text-gray-600">{stats.rating.score.toFixed(1)}/5</span>
+                  </div>
+                )}
+              </div>
+            )}
+            {status && (
+              <Badge
+                variant="secondary"
+                className={cn(
+                  "bg-white/90",
+                  status === "Active" && "text-green-600",
+                  status === "Beta" && "text-blue-600",
+                  status === "Development" && "text-orange-600"
+                )}
+              >
+                {status}
+              </Badge>
+            )}
+          </div>
         </div>
         <p className="text-gray-600">{description}</p>
       </CardHeader>
@@ -98,30 +123,6 @@ export default function ProjectCard({
               </Badge>
             ))}
           </div>
-
-          {/* 统计信息 */}
-          {stats && (
-            <div className="flex flex-wrap gap-4 text-sm text-gray-600">
-              {stats.stars !== undefined && (
-                <div className="flex items-center gap-1">
-                  <Star className="w-4 h-4 text-yellow-500" />
-                  <span>{stats.stars.toLocaleString()} stars</span>
-                </div>
-              )}
-              {stats.downloads !== undefined && (
-                <div className="flex items-center gap-1">
-                  <Download className="w-4 h-4 text-blue-500" />
-                  <span>{stats.downloads.toLocaleString()} downloads</span>
-                </div>
-              )}
-              {stats.rating && (
-                <div className="flex items-center gap-1">
-                  <Activity className="w-4 h-4 text-green-500" />
-                  <span>{stats.rating.score.toFixed(1)}/5 ({stats.rating.count} ratings)</span>
-                </div>
-              )}
-            </div>
-          )}
 
           {/* JetBrains Plugin Stats */}
           {links.jetbrains && isExpanded && (

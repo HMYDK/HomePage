@@ -26,14 +26,9 @@ export async function GET(request: Request) {
         orderBy: "cdate desc",
       });
       url += `?${params.toString()}`;
-      console.log("Reviews API URL:", url);
     } else if (endpoint) {
       url += `/${endpoint}`;
-      console.log("Endpoint API URL:", url);
-    } else {
-      console.log("Base API URL:", url);
     }
-
     const headers = {
       Accept: "application/json",
       "Cache-Control": "no-cache",

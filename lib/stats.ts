@@ -28,6 +28,8 @@ function extractGitHubInfo(
   }
 }
 
+const GITHUB_TOKEN = process.env.GITHUB_TOKEN;
+
 /**
  * 获取 GitHub 仓库统计信息
  * @param url GitHub 仓库 URL
@@ -39,16 +41,29 @@ async function fetchGitHubStats(
   if (!info) return null;
 
   try {
+    const headers = GITHUB_TOKEN
+      ? {
+          Authorization: `Bearer ${GITHUB_TOKEN}`,
+          "Content-Type": "application/json",
+        }
+      : undefined;
+
     const response = await fetch(
-      `https://api.github.com/repos/${info.owner}/${info.repo}`
+      `https://api.github.com/repos/${info.owner}/${info.repo}`,
+      { headers }
     );
-    if (!response.ok) return null;
+
+    if (!response.ok) {
+      console.error(`GitHub API error: ${response.statusText}`);
+      return null;
+    }
 
     const data = await response.json();
     return {
       stars: data.stargazers_count,
     };
-  } catch {
+  } catch (error) {
+    console.error("Error fetching GitHub stats:", error);
     return null;
   }
 }
