@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import GithubActivity from '@/components/GithubActivity'
-import ProjectCard from '@/components/ProjectCard'
+import ProjectsSection from '@/components/ProjectsSection'
 import { userConfig } from '@/config/user'
 
 export default function Home() {
@@ -27,6 +27,7 @@ export default function Home() {
       </header>
 
       <main className="container mx-auto px-4 py-12">
+        {/* Hero Section */}
         <section className="text-center mb-16">
           <div className="relative inline-block">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full blur-lg opacity-75 animate-pulse"></div>
@@ -49,11 +50,13 @@ export default function Home() {
                 <Github className="mr-2 h-4 w-4" /> GitHub
               </a>
             </Button>
-            {/* <Button variant="outline" asChild className="bg-white text-gray-800 hover:bg-gray-100 hover:text-blue-600 transition-colors">
-              <a href={userConfig.social.linkedin} target="_blank" rel="noopener noreferrer">
-                <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
-              </a>
-            </Button> */}
+            {userConfig.social.linkedin && (
+              <Button variant="outline" asChild className="bg-white text-gray-800 hover:bg-gray-100 hover:text-blue-600 transition-colors">
+                <a href={userConfig.social.linkedin} target="_blank" rel="noopener noreferrer">
+                  <Linkedin className="mr-2 h-4 w-4" /> LinkedIn
+                </a>
+              </Button>
+            )}
             <Button variant="outline" asChild className="bg-white text-gray-800 hover:bg-gray-100 hover:text-blue-600 transition-colors">
               <a href={`mailto:${userConfig.social.email}`}>
                 <Mail className="mr-2 h-4 w-4" /> Email
@@ -62,6 +65,7 @@ export default function Home() {
           </div>
         </section>
 
+        {/* About Section */}
         <section id="about" className="mb-16">
           <h3 className="text-3xl font-bold mb-6 text-center text-gray-800">About Me</h3>
           <Card className="bg-white border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
@@ -84,28 +88,15 @@ export default function Home() {
           </Card>
         </section>
 
-        <section id="projects" className="mb-16">
-          <h3 className="text-3xl font-bold mb-6 text-center text-gray-800">Featured Projects</h3>
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-            {userConfig.projects.map((project, index) => {
-              const Icon = project.icon
-              return (
-                <ProjectCard
-                  key={index}
-                  title={project.title}
-                  description={project.description}
-                  tags={project.tags}
-                  icon={<Icon className={`w-6 h-6 ${project.iconColor}`} />}
-                />
-              )
-            })}
-          </div>
-        </section>
+        {/* Projects Section */}
+        <ProjectsSection />
 
+        {/* GitHub Activity Section */}
         <section id="github-activity" className="mb-16">
           <GithubActivity />
         </section>
 
+        {/* Contact Section */}
         <section id="contact" className="text-center mb-16">
           <h3 className="text-3xl font-bold mb-6 text-gray-800">Get In Touch</h3>
           <p className="mb-6 text-xl text-gray-600">Interested in collaborating or have a project idea? Let's connect!</p>
@@ -115,11 +106,13 @@ export default function Home() {
                 <Mail className="mr-2 h-5 w-5" /> Email Me
               </a>
             </Button>
-            <Button size="lg" asChild className="bg-[#1DA1F2] text-white hover:bg-[#1a91da] transition-all duration-300">
-              <a href={userConfig.social.twitter} target="_blank" rel="noopener noreferrer">
-                <Twitter className="mr-2 h-5 w-5" /> Follow on Twitter
-              </a>
-            </Button>
+            {userConfig.social.twitter && (
+              <Button size="lg" asChild className="bg-[#1DA1F2] text-white hover:bg-[#1a91da] transition-all duration-300">
+                <a href={userConfig.social.twitter} target="_blank" rel="noopener noreferrer">
+                  <Twitter className="mr-2 h-5 w-5" /> Follow on Twitter
+                </a>
+              </Button>
+            )}
             <Button size="lg" asChild className="bg-[#333] text-white hover:bg-[#24292e] transition-all duration-300">
               <a href={userConfig.social.github} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-5 w-5" /> View on GitHub

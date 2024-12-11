@@ -1,6 +1,64 @@
-import { Code, Server, Database, Cloud } from "lucide-react";
+import {
+  Code,
+  Server,
+  Database,
+  Cloud,
+  Chrome,
+  GitCommit,
+  GithubIcon,
+} from "lucide-react";
 
-export const userConfig = {
+interface SocialLinks {
+  github: string;
+  linkedin?: string;
+  twitter?: string;
+  email: string;
+}
+
+interface ProjectLinks {
+  github?: string;
+  demo?: string;
+  docs?: string;
+  jetbrains?: {
+    pluginId: string;
+  };
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  longDescription?: string[];
+  status?: string;
+  tags: string[];
+  icon:
+    | typeof Code
+    | typeof Server
+    | typeof Database
+    | typeof Cloud
+    | typeof GithubIcon
+    | typeof GitCommit
+    | typeof Chrome;
+  iconColor: string;
+  image?: string;
+  links: ProjectLinks;
+  highlights?: string[];
+}
+
+interface UserConfig {
+  name: string;
+  title: string;
+  avatar: string;
+  social: SocialLinks;
+  about: {
+    title: string;
+    subtitle: string;
+    description: string[];
+    skills: string[];
+  };
+  projects: Project[];
+}
+
+export const userConfig: UserConfig = {
   // 基本信息
   name: "HMYDK",
   title: "Full Stack Developer | Open Source Enthusiast | Tech Blogger",
@@ -9,7 +67,6 @@ export const userConfig = {
   // 社交链接
   social: {
     github: "https://github.com/HMYDK",
-    // linkedin: "https://linkedin.com/in/johndoe",
     twitter: "https://x.com/lilijiexinku007",
     email: "paranoia_zk@yeah.net",
   },
@@ -17,22 +74,19 @@ export const userConfig = {
   // 关于我
   about: {
     title: "Hello, World!",
-    //英文：独立开发爱好者
-    subtitle: "Independent Developer Enthusiast",
-    //英文：独立开发爱好者，AI爱好者，多年开发经验
+    subtitle: "Passionate about crafting elegant solutions to complex problems",
     description: [
-      "- A passionate independent developer with years of experience in full-stack development.",
-      "- AI technology enthusiast, exploring the intersection of AI and software development.",
-      "- Dedicated to creating innovative solutions and contributing to open-source projects.",
+      "I'm a full stack developer with 5+ years of experience in building scalable web applications. My journey in tech has been driven by curiosity and a love for learning. I thrive in collaborative environments and enjoy tackling challenging projects that push the boundaries of what's possible.",
+      "When I'm not coding, you can find me contributing to open source projects, writing technical blogs, or exploring the latest developments in AI and machine learning.",
     ],
     skills: [
-      "Java",
-      "Python",
       "JavaScript",
       "TypeScript",
       "React",
-      "Next.js",
+      "Node.js",
+      "Python",
       "Docker",
+      "AWS",
     ],
   },
 
@@ -41,45 +95,59 @@ export const userConfig = {
     {
       title: "AI Git Commit",
       description:
-        "This plugin uses AI to automatically generate commit messages based on the changes in your code.",
-      tags: ["jetbrains", "plugin", "AI", "git commit message"],
-      icon: Code,
+        "JetBrains IDE plugin that uses AI to automatically generate meaningful commit messages by analyzing your code changes.",
+      longDescription: [
+        "Developed a JetBrains plugin that integrates with OpenAI's GPT to analyze code changes and generate descriptive commit messages.",
+        "Implemented intelligent diff analysis to provide context-aware commit suggestions.",
+        "Built with a focus on developer experience and productivity enhancement.",
+      ],
+      status: "Active",
+      tags: ["JetBrains Plugin", "AI", "Git", "Java", "Open Source"],
+      icon: GitCommit,
       iconColor: "text-blue-500",
+      image: "/projects/ai-git-commit.png",
+      links: {
+        github: "https://github.com/HMYDK/AIGitCommit",
+        demo: "https://plugins.jetbrains.com/plugin/24851-ai-git-commit",
+        jetbrains: {
+          pluginId: "24851",
+        },
+      },
+      highlights: ["Support multiple models"],
     },
     {
-      title: "Project Beta",
-      description:
-        "Scalable Node.js API for IoT device management, featuring real-time updates, device provisioning, and data aggregation.",
-      tags: ["Node.js", "Express", "MongoDB", "MQTT", "Docker"],
-      icon: Server,
-      iconColor: "text-green-500",
+      title: "WebHighlighter",
+      description: "A tool that can highlight the text in the web page.",
+      longDescription: ["A tool that can highlight the text in the web page."],
+      status: "Development",
+      tags: ["Chrome Extension", "JavaScript", "Browser Extension"],
+      icon: Chrome,
+      iconColor: "text-blue-500",
+      image: "/projects/web-highlighter.png",
+      links: {
+        github: "https://github.com/HMYDK/code-review-gpt",
+        demo: "https://plugins.jetbrains.com/plugin/24851-ai-git-commit",
+      },
     },
     {
-      title: "Project Gamma",
-      description:
-        "AI-powered code review assistant that provides intelligent suggestions, detects potential bugs, and enforces coding standards.",
-      tags: ["Python", "TensorFlow", "NLP", "GitHub API"],
-      icon: Database,
-      iconColor: "text-purple-500",
+      title: "CoderHomePage",
+      description: "A personal homepage for developers",
+      longDescription: [
+        "Support counting GitHub stars.",
+        "Support collecting JetBrains plugin information.",
+      ],
+      status: "Beta",
+      tags: ["Open Source", "React", "Next.js", "TailwindCSS"],
+      icon: GithubIcon,
+      iconColor: "text-blue-500",
+      image: "/projects/ai-git-commit.png",
+      links: {
+        github: "https://github.com/HMYDK/HomePage",
+      },
+      highlights: ["Easy to use"],
     },
-    {
-      title: "Project Delta",
-      description:
-        "Blockchain-based supply chain tracking system for enhancing transparency and traceability in complex supply networks.",
-      tags: ["Solidity", "Ethereum", "Web3.js", "React"],
-      icon: Cloud,
-      iconColor: "text-indigo-500",
-    },
-  ],
-
-  // GitHub 活动数据
-  githubActivity: [
-    { date: "2023-06-01", contributions: 5 },
-    { date: "2023-06-08", contributions: 8 },
-    { date: "2023-06-15", contributions: 12 },
-    { date: "2023-06-22", contributions: 7 },
-    { date: "2023-06-29", contributions: 15 },
-    { date: "2023-07-06", contributions: 10 },
-    { date: "2023-07-13", contributions: 18 },
   ],
 };
+
+// 导出项目列表供其他组件使用
+export const projects = userConfig.projects;
