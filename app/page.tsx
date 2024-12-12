@@ -5,6 +5,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge"
 import ProjectsSection from '@/components/ProjectsSection'
 import { userConfig } from '@/config/user'
+import { AnimatedTitle } from '@/components/AnimatedTitle'
 
 // 动态纹理背景组件
 const TextureBackground = () => (
@@ -73,21 +74,10 @@ export default function Home() {
             </div>
           </div>
 
-          {/* 名字和标题 */}
-          <div className="mt-12 relative animate-smooth-fade" style={{ animationDelay: '0.3s' }}>
-            <h2 className="text-6xl sm:text-7xl font-bold mb-6 relative inline-block">
-              <span className="text-theme-text-primary relative">
-                {userConfig.name}
-                <span className="absolute -inset-2 bg-theme-accent/5 rounded-lg blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-700"></span>
-              </span>
-            </h2>
-            <p className="text-xl sm:text-2xl text-theme-text-secondary relative inline-block group">
-              <span className="relative z-10">
-                {userConfig.title}
-              </span>
-              <span className="absolute bottom-0 left-0 w-0 h-[2px] bg-theme-accent opacity-0 group-hover:w-full group-hover:opacity-100 transition-all duration-500"></span>
-            </p>
-          </div>
+          <AnimatedTitle
+            text={userConfig.title}
+            className="text-theme-text-secondary"
+          />
 
           {/* 社交链接 */}
           <div className="flex flex-wrap justify-center gap-8 mt-12 animate-smooth-fade" style={{ animationDelay: '0.6s' }}>
@@ -111,11 +101,6 @@ export default function Home() {
                 </span>
               </a>
             ))}
-          </div>
-
-          {/* 向下滚动指示器 */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mt-16">
-            <ChevronDown className="w-6 h-6 text-theme-text-secondary/40 animate-subtle-float" />
           </div>
         </section>
 

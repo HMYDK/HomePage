@@ -105,6 +105,10 @@ module.exports = {
           "0%": { opacity: "0", transform: "translateY(10px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
+        blink: {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -113,6 +117,7 @@ module.exports = {
         "ink-spread": "ink-spread 1.5s ease-out forwards",
         "elegant-spin": "elegant-spin 20s linear infinite",
         "smooth-fade": "smooth-fade 0.6s ease-out forwards",
+        blink: "blink 1s step-end infinite",
       },
       backgroundImage: {
         grain: "url('/textures/grain.png')",
