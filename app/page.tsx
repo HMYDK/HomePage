@@ -7,6 +7,7 @@ import ProjectsSection from '@/components/ProjectsSection'
 import { userConfig } from '@/config/user'
 import { AnimatedTitle } from '@/components/AnimatedTitle'
 import { DailyQuote } from '@/components/DailyQuote'
+import { cn } from '@/lib/utils'
 
 // 动态纹理背景组件
 const TextureBackground = () => (
@@ -55,23 +56,34 @@ export default function Home() {
         {/* Hero Section */}
         <section className="text-center mb-24 relative">
           {/* 头像容器 */}
-          <div className="relative inline-block group">
-            <div className="relative">
-              {/* 光晕效果 */}
-              <div className="absolute -inset-4 bg-theme-accent/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
+          <div className="relative inline-block group perspective">
+            <div className="relative transition-all duration-500 ease-out animate-levitate preserve-3d">
+              {/* 主光晕效果 */}
+              <div className="absolute -inset-4 bg-gradient-to-r from-theme-accent/30 via-theme-gold/20 to-theme-accent/30 rounded-full blur-2xl opacity-60 animate-glow transition-all duration-700"></div>
+
+              {/* 装饰环 */}
+              <div className="absolute -inset-6 rounded-full border-2 border-theme-accent/20 animate-spin-slow"></div>
+              <div className="absolute -inset-4 rounded-full border border-theme-gold/20 animate-spin-reverse"></div>
+
               {/* 头像框 */}
-              <div className="relative rounded-full p-[2px] bg-gradient-to-r from-theme-accent/20 to-theme-gold/20">
-                <div className="rounded-full p-[2px] bg-theme-bg-light dark:bg-theme-bg-dark">
+              <div className="relative rounded-full p-[2px] bg-gradient-to-r from-theme-accent/40 via-theme-gold/40 to-theme-accent/40 animate-morph">
+                <div className="rounded-full p-[2px] bg-theme-bg-light dark:bg-theme-bg-dark relative z-10 overflow-hidden">
                   <Image
                     src={userConfig.avatar}
                     alt={userConfig.name}
                     width={180}
                     height={180}
-                    className="rounded-full relative z-10 transform group-hover:scale-[1.02] transition-transform duration-500"
+                    className="rounded-full relative z-10 transition-all duration-500 scale-[1.02]"
                     priority
                   />
+                  {/* 内部光效 */}
+                  <div className="absolute inset-0 bg-gradient-to-tr from-theme-accent/20 to-transparent opacity-60 transition-opacity duration-500"></div>
                 </div>
               </div>
+
+              {/* 装饰光环 */}
+              <div className="absolute -inset-8 rounded-full border border-theme-accent/20 transition-colors duration-500"></div>
+              <div className="absolute -inset-10 rounded-full border border-theme-gold/20 transition-colors duration-500"></div>
             </div>
           </div>
 
