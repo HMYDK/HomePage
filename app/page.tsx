@@ -103,11 +103,6 @@ export default function Home() {
               </a>
             ))}
           </div>
-
-          {/* 向下滚动指示器 */}
-          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mt-16">
-            <ChevronDown className="w-6 h-6 text-theme-text-secondary/40 dark:text-gray-400/40 animate-subtle-float" />
-          </div>
         </section>
 
         {/* About Section */}
