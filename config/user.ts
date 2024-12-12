@@ -133,13 +133,27 @@ export const userConfig: UserConfig = {
       },
     },
     {
+      title: "ResumeAI",
+      description: "Update your resume with AI",
+      longDescription: ["Update your resume with AI"],
+      status: "Development",
+      tags: ["Resume", "AI"],
+      icon: Chrome,
+      iconColor: "text-blue-500",
+      image: "/projects/web-highlighter.png",
+      links: {
+        // github: "https://github.com/HMYDK/code-review-gpt",
+        demo: "https://plugins.jetbrains.com/plugin/24851-ai-git-commit",
+      },
+    },
+    {
       title: "CoderHomePage",
       description: "A personal homepage for developers",
       longDescription: [
         "Support counting GitHub stars.",
         "Support collecting JetBrains plugin information.",
       ],
-      status: "Beta",
+      status: "Active",
       tags: ["Open Source", "React", "Next.js", "TailwindCSS"],
       icon: GithubIcon,
       iconColor: "text-blue-500",

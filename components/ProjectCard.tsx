@@ -95,10 +95,10 @@ export default function ProjectCard({
               <Badge
                 variant="secondary"
                 className={cn(
-                  "bg-white/90",
-                  status === "Active" && "text-green-700",
-                  status === "Beta" && "text-blue-700",
-                  status === "Development" && "text-orange-700"
+                  "px-3 py-1 font-medium border",
+                  status === "Active" && "bg-green-100 text-green-800 border-green-200",
+                  status === "Beta" && "bg-blue-100 text-blue-800 border-blue-200",
+                  status === "Development" && "bg-orange-100 text-orange-800 border-orange-200"
                 )}
               >
                 {status}
