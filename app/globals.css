@@ -34,6 +34,16 @@
     --ring: 222.2 84% 4.9%;
 
     --radius: 0.5rem;
+
+    /* 主题色变量 */
+    --theme-bg-light: 0 0% 97%;
+    --theme-bg-dark: 222 47% 11%;
+    --theme-accent: 0 72% 51%;
+    --theme-accent-hover: 0 72% 45%;
+    --theme-gold: 35 45% 72%;
+    --theme-jade: 187 70% 32%;
+    --theme-ink: 210 4% 21%;
+    --theme-stone: 220 9% 40%;
   }
 
   .dark {
@@ -65,6 +75,16 @@
     --destructive-foreground: 210 40% 98%;
 
     --ring: 212.7 26.8% 83.9%;
+
+    /* 深色模式主题色变量 */
+    --theme-bg-light: 222 47% 11%;
+    --theme-bg-dark: 0 0% 7%;
+    --theme-accent: 0 72% 51%;
+    --theme-accent-hover: 0 72% 45%;
+    --theme-gold: 35 45% 72%;
+    --theme-jade: 187 70% 32%;
+    --theme-ink: 210 4% 90%;
+    --theme-stone: 220 9% 70%;
   }
 }
 
@@ -77,6 +97,7 @@
   }
 }
 
+/* 自定义工具类 */
 @layer utilities {
   .perspective {
     perspective: 1000px;
@@ -92,5 +113,75 @@
 
   .backface-hidden {
     backface-visibility: hidden;
+  }
+
+  /* 动画相关 */
+  .animate-fade-in {
+    animation: fadeIn 0.5s ease-out forwards;
+  }
+
+  .animate-slide-up {
+    animation: slideUp 0.5s ease-out forwards;
+  }
+
+  /* 响应式工具类 */
+  .responsive-container {
+    @apply container mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  .responsive-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6;
+  }
+
+  /* 深色模式过渡 */
+  .theme-transition {
+    @apply transition-colors duration-300;
+  }
+}
+
+/* 自定义动画关键帧 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* 无障碍性支持 */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* 打印样式优化 */
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  body {
+    color: black;
+    background: white;
+  }
+
+  a {
+    text-decoration: underline;
   }
 }
