@@ -93,12 +93,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="system"
-          enableSystem
-          disableTransitionOnChange
-        >
+        <ThemeProvider>
           <ErrorBoundary>
             <div className="relative flex min-h-screen flex-col">
               <div className="flex-1">

@@ -6,6 +6,7 @@ import { Badge } from "@/components/ui/badge"
 import ProjectsSection from '@/components/ProjectsSection'
 import { userConfig } from '@/config/user'
 import { AnimatedTitle } from '@/components/AnimatedTitle'
+import { DailyQuote } from '@/components/DailyQuote'
 
 // 动态纹理背景组件
 const TextureBackground = () => (
@@ -36,7 +37,7 @@ export default function Home() {
             </span>
           </h1>
           <div className="space-x-10">
-            {['About', 'Projects', 'Contact'].map((item) => (
+            {['About', 'Projects'].map((item) => (
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
@@ -135,29 +136,9 @@ export default function Home() {
         {/* Projects Section */}
         <ProjectsSection />
 
-        {/* Contact Section */}
-        <section id="contact" className="text-center mb-16">
-          <h3 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Get In Touch</h3>
-          <p className="mb-6 text-xl text-gray-600 dark:text-gray-300">Looking forward to communicating with you!</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <Button size="lg" asChild className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
-              <a href={`mailto:${userConfig.social.email}`}>
-                <Mail className="mr-2 h-5 w-5" /> Email
-              </a>
-            </Button>
-            {userConfig.social.twitter && (
-              <Button size="lg" asChild className="bg-[#0C7ABF] text-white hover:bg-[#0A6AA6] transition-all duration-300">
-                <a href={userConfig.social.twitter} target="_blank" rel="noopener noreferrer">
-                  <Twitter className="mr-2 h-5 w-5" /> Twitter
-                </a>
-              </Button>
-            )}
-            <Button size="lg" asChild className="bg-[#333] dark:bg-[#24292e] text-white hover:bg-[#24292e] dark:hover:bg-[#333] transition-all duration-300">
-              <a href={userConfig.social.github} target="_blank" rel="noopener noreferrer">
-                <Github className="mr-2 h-5 w-5" /> GitHub
-              </a>
-            </Button>
-          </div>
+        {/* Daily Quote */}
+        <section className="mb-16">
+          <DailyQuote />
         </section>
       </main>
 
