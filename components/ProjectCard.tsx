@@ -56,14 +56,14 @@ export default function ProjectCard({
 
   return (
     <Card className={cn(
-      "group bg-white border-none shadow-lg transition-all duration-300",
+      "group bg-white dark:bg-gray-800 border-none shadow-lg transition-all duration-300",
       isExpanded ? "shadow-xl" : "hover:shadow-xl"
     )}>
       <CardHeader>
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
             <Icon className={cn("w-6 h-6", iconColor)} />
-            <h3 className="text-xl font-semibold text-blue-600 group-hover:text-purple-600 transition-colors duration-300">
+            <h3 className="text-xl font-semibold text-blue-600 dark:text-blue-400 group-hover:text-purple-600 dark:group-hover:text-purple-400 transition-colors duration-300">
               {title}
             </h3>
           </div>
@@ -74,19 +74,19 @@ export default function ProjectCard({
                 {stats.stars !== undefined && (
                   <div className="flex items-center gap-1">
                     <Star className="w-4 h-4 text-yellow-500" />
-                    <span className="text-gray-600">{stats.stars.toLocaleString()}</span>
+                    <span className="text-gray-600 dark:text-gray-300">{stats.stars.toLocaleString()}</span>
                   </div>
                 )}
                 {stats.downloads !== undefined && (
                   <div className="flex items-center gap-1">
                     <Download className="w-4 h-4 text-blue-500" />
-                    <span className="text-gray-600">{stats.downloads.toLocaleString()}</span>
+                    <span className="text-gray-600 dark:text-gray-300">{stats.downloads.toLocaleString()}</span>
                   </div>
                 )}
                 {stats.rating && (
                   <div className="flex items-center gap-1">
                     <Activity className="w-4 h-4 text-green-500" />
-                    <span className="text-gray-600">{stats.rating.score.toFixed(1)}/5</span>
+                    <span className="text-gray-600 dark:text-gray-300">{stats.rating.score.toFixed(1)}/5</span>
                   </div>
                 )}
               </div>
@@ -96,9 +96,9 @@ export default function ProjectCard({
                 variant="secondary"
                 className={cn(
                   "px-3 py-1 font-medium border",
-                  status === "Active" && "bg-green-100 text-green-800 border-green-200",
-                  status === "Beta" && "bg-blue-100 text-blue-800 border-blue-200",
-                  status === "Development" && "bg-orange-100 text-orange-800 border-orange-200"
+                  status === "Active" && "bg-green-100 dark:bg-green-900/30 text-green-800 dark:text-green-300 border-green-200 dark:border-green-900",
+                  status === "Beta" && "bg-blue-100 dark:bg-blue-900/30 text-blue-800 dark:text-blue-300 border-blue-200 dark:border-blue-900",
+                  status === "Development" && "bg-orange-100 dark:bg-orange-900/30 text-orange-800 dark:text-orange-300 border-orange-200 dark:border-orange-900"
                 )}
               >
                 {status}
@@ -106,7 +106,7 @@ export default function ProjectCard({
             )}
           </div>
         </div>
-        <p className="text-gray-600">{description}</p>
+        <p className="text-gray-600 dark:text-gray-300">{description}</p>
       </CardHeader>
 
       <CardContent>
@@ -117,7 +117,7 @@ export default function ProjectCard({
               <Badge
                 key={tag}
                 variant="secondary"
-                className="bg-gray-100 text-gray-800 group-hover:bg-blue-100 group-hover:text-blue-800 transition-colors duration-300"
+                className="bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200 group-hover:bg-blue-100 dark:group-hover:bg-blue-900/30 group-hover:text-blue-800 dark:group-hover:text-blue-300 transition-colors duration-300"
               >
                 {tag}
               </Badge>
@@ -135,14 +135,14 @@ export default function ProjectCard({
           {isExpanded && longDescription && (
             <div className="mt-4 space-y-2">
               {longDescription.map((paragraph, index) => (
-                <p key={index} className="text-gray-600 text-sm">
+                <p key={index} className="text-gray-600 dark:text-gray-300 text-sm">
                   {paragraph}
                 </p>
               ))}
               {highlights && (
                 <div className="mt-4">
-                  <h4 className="font-medium text-gray-800 mb-2">Highlights</h4>
-                  <ul className="list-disc list-inside text-sm text-gray-600 space-y-1">
+                  <h4 className="font-medium text-gray-800 dark:text-gray-200 mb-2">Highlights</h4>
+                  <ul className="list-disc list-inside text-sm text-gray-600 dark:text-gray-300 space-y-1">
                     {highlights.map((highlight, index) => (
                       <li key={index}>{highlight}</li>
                     ))}

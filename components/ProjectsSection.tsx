@@ -21,7 +21,7 @@ export default function ProjectsSection() {
 
     return (
         <section id="projects" className="mb-16">
-            <h3 className="text-3xl font-bold mb-6 text-center text-gray-800">Featured Projects</h3>
+            <h3 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">Featured Projects</h3>
 
             {/* 标签筛选器 */}
             <div className="flex flex-wrap justify-center gap-2 mb-8">
@@ -66,7 +66,7 @@ export default function ProjectsSection() {
 
             {/* 无结果提示 */}
             {filteredProjects.length === 0 && (
-                <div className="text-center text-gray-500 mt-8">
+                <div className="text-center text-gray-500 dark:text-gray-400 mt-8">
                     No projects found for the selected filter.
                 </div>
             )}

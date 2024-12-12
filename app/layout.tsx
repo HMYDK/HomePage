@@ -2,7 +2,6 @@ import "./globals.css"
 import { Metadata } from 'next'
 import { userConfig } from '@/config/user'
 import { ThemeProvider } from '@/components/ThemeProvider'
-import { LoadingProvider } from '@/components/LoadingProvider'
 import { ThemeToggle } from '@/components/ThemeToggle'
 import { BackToTop } from '@/components/BackToTop'
 import { ErrorBoundary } from '@/components/ErrorBoundary'
@@ -73,7 +72,7 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <html lang="en" className="scroll-smooth">
+    <html lang="en" suppressHydrationWarning>
       <head>
         <link
           rel="preload"
@@ -94,18 +93,21 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-screen bg-background font-sans antialiased">
-        <ThemeProvider>
-          <LoadingProvider>
-            <ErrorBoundary>
-              <div className="relative flex min-h-screen flex-col">
-                <div className="flex-1">
-                  {children}
-                  <ThemeToggle />
-                  <BackToTop />
-                </div>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <ErrorBoundary>
+            <div className="relative flex min-h-screen flex-col">
+              <div className="flex-1">
+                {children}
+                <ThemeToggle />
+                <BackToTop />
               </div>
-            </ErrorBoundary>
-          </LoadingProvider>
+            </div>
+          </ErrorBoundary>
         </ThemeProvider>
       </body>
     </html>

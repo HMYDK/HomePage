@@ -17,7 +17,7 @@ const TextureBackground = () => (
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-theme-bg-light text-theme-text-primary relative">
+    <div className="min-h-screen bg-theme-bg-light dark:bg-theme-bg-dark text-theme-text-primary dark:text-white relative">
       {/* 背景效果 */}
       <TextureBackground />
 
@@ -29,7 +29,7 @@ export default function Home() {
         <nav className="flex flex-col sm:flex-row justify-between items-center">
           <h1 className="text-2xl font-bold flex items-center mb-4 sm:mb-0 relative group">
             <Terminal className="inline-block mr-2 text-theme-accent opacity-80" />
-            <span className="text-theme-text-primary relative">
+            <span className="text-theme-text-primary dark:text-white relative">
               {userConfig.name}
               <span className="text-theme-accent">.dev</span>
               <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-theme-accent opacity-0 group-hover:w-full group-hover:opacity-100 transition-all duration-500"></span>
@@ -40,7 +40,7 @@ export default function Home() {
               <a
                 key={item}
                 href={`#${item.toLowerCase()}`}
-                className="text-theme-text-secondary hover:text-theme-accent transition-colors duration-300 relative group"
+                className="text-theme-text-secondary dark:text-gray-300 hover:text-theme-accent dark:hover:text-theme-accent transition-colors duration-300 relative group"
               >
                 <span className="relative z-10">{item}</span>
                 <span className="absolute -bottom-1 left-0 w-0 h-[2px] bg-theme-accent opacity-0 group-hover:w-full group-hover:opacity-100 transition-all duration-500"></span>
@@ -60,7 +60,7 @@ export default function Home() {
               <div className="absolute -inset-4 bg-theme-accent/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-all duration-700"></div>
               {/* 头像框 */}
               <div className="relative rounded-full p-[2px] bg-gradient-to-r from-theme-accent/20 to-theme-gold/20">
-                <div className="rounded-full p-[2px] bg-theme-bg-light">
+                <div className="rounded-full p-[2px] bg-theme-bg-light dark:bg-theme-bg-dark">
                   <Image
                     src={userConfig.avatar}
                     alt={userConfig.name}
@@ -76,7 +76,7 @@ export default function Home() {
 
           <AnimatedTitle
             text={userConfig.title}
-            className="text-theme-text-secondary"
+            className="text-theme-text-secondary dark:text-gray-300"
           />
 
           {/* 社交链接 */}
@@ -92,7 +92,7 @@ export default function Home() {
                 href={link.href}
                 target={link.icon !== Mail ? "_blank" : undefined}
                 rel={link.icon !== Mail ? "noopener noreferrer" : undefined}
-                className="group flex items-center space-x-2 text-theme-text-secondary hover:text-theme-accent transition-colors duration-300"
+                className="group flex items-center space-x-2 text-theme-text-secondary dark:text-gray-300 hover:text-theme-accent dark:hover:text-theme-accent transition-colors duration-300"
               >
                 <link.icon className="w-5 h-5 transform group-hover:scale-110 transition-transform duration-300" />
                 <span className="relative">
@@ -102,23 +102,28 @@ export default function Home() {
               </a>
             ))}
           </div>
+
+          {/* 向下滚动指示器 */}
+          <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 mt-16">
+            <ChevronDown className="w-6 h-6 text-theme-text-secondary/40 dark:text-gray-400/40 animate-subtle-float" />
+          </div>
         </section>
 
         {/* About Section */}
         <section id="about" className="mb-16">
-          <h3 className="text-3xl font-bold mb-6 text-center text-gray-800">About Me</h3>
-          <Card className="bg-white border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h3 className="text-3xl font-bold mb-6 text-center text-gray-800 dark:text-white">About Me</h3>
+          <Card className="bg-white dark:bg-gray-800 border-none shadow-lg hover:shadow-xl transition-shadow duration-300">
             <CardHeader>
-              <CardTitle className="text-2xl text-blue-600">{userConfig.about.title}</CardTitle>
-              <CardDescription className="text-gray-600">{userConfig.about.subtitle}</CardDescription>
+              <CardTitle className="text-2xl text-blue-600 dark:text-blue-400">{userConfig.about.title}</CardTitle>
+              <CardDescription className="text-gray-600 dark:text-gray-300">{userConfig.about.subtitle}</CardDescription>
             </CardHeader>
             <CardContent>
               {userConfig.about.description.map((paragraph, index) => (
-                <p key={index} className="mb-4 text-gray-600">{paragraph}</p>
+                <p key={index} className="mb-4 text-gray-600 dark:text-gray-300">{paragraph}</p>
               ))}
               <div className="flex flex-wrap gap-2 mt-4">
                 {userConfig.about.skills.map((skill, index) => (
-                  <Badge key={index} variant="secondary" className="bg-blue-100 text-blue-800 hover:bg-blue-200 transition-colors">
+                  <Badge key={index} variant="secondary" className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-100 hover:bg-blue-200 dark:hover:bg-blue-800 transition-colors">
                     {skill}
                   </Badge>
                 ))}
@@ -132,8 +137,8 @@ export default function Home() {
 
         {/* Contact Section */}
         <section id="contact" className="text-center mb-16">
-          <h3 className="text-3xl font-bold mb-6 text-gray-800">Get In Touch</h3>
-          <p className="mb-6 text-xl text-gray-600">Looking forward to communicating with you!</p>
+          <h3 className="text-3xl font-bold mb-6 text-gray-800 dark:text-white">Get In Touch</h3>
+          <p className="mb-6 text-xl text-gray-600 dark:text-gray-300">Looking forward to communicating with you!</p>
           <div className="flex flex-wrap justify-center gap-4">
             <Button size="lg" asChild className="bg-gradient-to-r from-blue-500 to-purple-500 text-white hover:from-blue-600 hover:to-purple-600 transition-all duration-300">
               <a href={`mailto:${userConfig.social.email}`}>
@@ -147,7 +152,7 @@ export default function Home() {
                 </a>
               </Button>
             )}
-            <Button size="lg" asChild className="bg-[#333] text-white hover:bg-[#24292e] transition-all duration-300">
+            <Button size="lg" asChild className="bg-[#333] dark:bg-[#24292e] text-white hover:bg-[#24292e] dark:hover:bg-[#333] transition-all duration-300">
               <a href={userConfig.social.github} target="_blank" rel="noopener noreferrer">
                 <Github className="mr-2 h-5 w-5" /> GitHub
               </a>
@@ -156,8 +161,8 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="container mx-auto px-4 py-8 text-center border-t border-gray-200">
-        <p className="mt-2 text-sm text-gray-500">Built with Next.js and Tailwind CSS</p>
+      <footer className="container mx-auto px-4 py-8 text-center border-t border-gray-200 dark:border-gray-700">
+        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Built with Next.js and Tailwind CSS</p>
       </footer>
     </div>
   )
