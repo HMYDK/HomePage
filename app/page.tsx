@@ -148,10 +148,6 @@ export default function Home() {
           <DailyQuote />
         </section>
       </main>
-
-      <footer className="container mx-auto px-4 py-8 text-center border-t border-gray-200 dark:border-gray-700">
-        <p className="mt-2 text-sm text-gray-500 dark:text-gray-400">Built with Next.js and Tailwind CSS</p>
-      </footer>
     </div>
   )
 }
